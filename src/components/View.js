@@ -35,7 +35,7 @@ const View = () => {
 
   return (
     <div className='container'>
-      <h1 className='bg-dark text-white p-2'>View Post Reactjs</h1>
+      <h1 className='bg-dark text-white p-2'>View Post</h1>
       <form>
       <div className="mb-3">
         <input type="number" className="form-control" placeholder='Enter Post ID' value={postid} onChange={(e) => setpostId(e.target.value)} />
