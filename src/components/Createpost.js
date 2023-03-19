@@ -12,13 +12,18 @@ const Createpost = () => {
     const { title, body } = values
     const createPost = async (e) => {
         e.preventDefault()
-         await axios.post('https://jsonplaceholder.typicode.com/posts',
+        if (title === "" || body === "") {
+            window.alert("Plz Enter Information")
+        }
+        else{
+            await axios.post('https://jsonplaceholder.typicode.com/posts',
             {
                 title: values.title,
                 body: values.body
             })
             .then(response => response.data)
             .then(mydata => setNewdata(mydata))
+        }
     }
 
     const showData = () => {
@@ -40,12 +45,12 @@ const Createpost = () => {
             <form>
                 <div className="mb-3 container mt-4">
                     <h1 className='bg-dark text-white'>Create Post</h1>
-                    <input type="text" className="form-control mt-4" placeholder='Enter Post Title' value={title} onChange={(e) => setValues({ ...values, title: e.target.value })} />
+                    <input type="text" className="form-control mt-4" placeholder='Enter Post Title' value={title} onChange={(e) => setValues({ ...values, title: e.target.value })} required/>
                     <div className="form-floating mt-4">
-                        <textarea className="form-control" placeholder="Leave a comment here" value={body} onChange={(e) => setValues({ ...values, body: e.target.value })} />
+                        <textarea className="form-control" placeholder="Leave a comment here" value={body} onChange={(e) => setValues({ ...values, body: e.target.value })} required/>
                         <label htmlFor="floatingTextarea">Comments</label>
                     </div>
-                    <button type="submit" className="btn btn-success mt-4" onClick={createPost}>Submit</button>
+                    <button type="submit" className="btn btn-success mt-4" onClick={createPost}>createPost</button>
                     <button type="submit" className="btn btn-primary mt-4" onClick={() => nevigate('/')}>Go Home</button>
                 </div>
             </form>

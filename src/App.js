@@ -1,15 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Createpost from './components/Createpost';
+import Error from './components/Error';
+import Header from './components/Header';
+import PostExample from './components/PostExample';
 import View from './components/View';
 
 function App() {
   return (
     <div className="App">
-    <Routes>
+    <Header />
+    <PostExample />
+    {/* <Routes>
     <Route path='/' element={<View />} />
     <Route path='/createpost' element={<Createpost />}/>
-    </Routes>
+    <Route path='/*' element={<Error />}/>
+    </Routes> */}
     </div>
   );
 }
